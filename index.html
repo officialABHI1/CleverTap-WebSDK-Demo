@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CleverTap Web SDK Showcase</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script type="text/javascript">
+        var clevertap = {
+            event: [],
+            profile: [],
+            account: [],
+            onUserLogin: [],
+            notifications: [],
+            privacy: []
+        };
+        // Replace with your Account ID and Region Code
+        // Region codes: eu1, in1, us1, sk1, sg1 (use the one applicable to your account)
+        clevertap.account.push({ "id": "4WK-WZ6-447Z" });
+        clevertap.region = "eu1"; // Add this line for region selection
+        clevertap.privacy.push({ optOut: false }); // Set to true to disable data collection
+        clevertap.privacy.push({ useIP: true });  // Set to true to allow CleverTap to use IP address for location
+        (function () {
+            var wzrk = document.createElement('script');
+            wzrk.type = 'text/javascript';
+            wzrk.async = true;
+            wzrk.src = ('https:' == document.location.protocol ? 'https://d2r1yp2w7bby2u.cloudfront.net' : 'http://static.clevertap.com') + '/js/a.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wzrk, s);
+        })();
+    </script>
+    </head>
+<body>
+
+    <h1>CleverTap Web SDK Showcase</h1>
+   
+    <div class="section">
+        <h2>Initialization & Basic Settings</h2>
+        <button id="btnOptOut">Opt Out Data Collection</button>
+        <button id="btnOptIn">Opt In Data Collection</button>
+        <button id="btnUseIP">Allow IP for Location</button>
+        <button id="btnNoIP">Disallow IP for Location</button>
+        <br><br>
+        <label for="logLevel">Set Log Level:</label>
+        <select id="logLevel">
+            <option value="0">0 - Disable Logs</option>
+            <option value="1">1 - Errors Only</option>
+            <option value="2" selected>2 - Errors & Info</option>
+            <option value="3">3 - All Logs (Verbose)</option>
+        </select>
+        <button id="btnSetLogLevel">Set Level</button>
+        <button id="btnGetSDKVersion">Show SDK Version</button>
+        <br><br>
+        <button id="btnOfflineMode">Enable Offline Mode</button>
+        <button id="btnOnlineMode">Disable Offline Mode (Go Online)</button>
+        <p></p>
+    </div>
+
+    <div class="section">
+        <h2>User Profile Management</h2>
+        <p>Identify a user (onUserLogin) or update the current profile (profile.push).</p>
+
+        <div class="form-group">
+            <label for="identity">Identity (Unique ID):</label>
+            <input type="text" id="identity" placeholder="e.g., user123">
+        </div>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="e.g., Jane Doe">
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="e.g., jane.doe@example.com">
+        </div>
+         <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" placeholder="e.g., +14155551234">
+        </div>
+        <button id="btnLogin">Push `onUserLogin`</button>
+        <hr>
+        <div class="form-group">
+            <label for="customerType">Customer Type:</label>
+            <input type="text" id="customerType" placeholder="e.g., Gold">
+        </div>
+        <div class="form-group">
+            <label for="language">Preferred Language:</label>
+            <input type="text" id="language" placeholder="e.g., Spanish">
+        </div>
+        <button id="btnUpdateProfile">Push `profile.push`</button>
+    </div>
+
+    <div class="section">
+        <h2>Event Tracking</h2>
+        <button id="btnSimpleEvent">Push Simple Event ('Page Viewed')</button>
+        <hr>
+        <p>Push an event with properties:</p>
+        <div class="form-group">
+            <label for="prodName">Product Name:</label>
+            <input type="text" id="prodName" value="Cool Gadget">
+        </div>
+        <div class="form-group">
+            <label for="prodCategory">Category:</label>
+            <input type="text" id="prodCategory" value="Electronics">
+        </div>
+         <div class="form-group">
+            <label for="prodPrice">Price:</label>
+            <input type="number" id="prodPrice" value="99.99" step="0.01">
+        </div>
+        <button id="btnEventWithProps">Push Event ('Product Purchased') with Properties</button>
+    </div>
+
+    <div class="section">
+        <h2>Web Push Notifications</h2>
+        <button id="btnRequestPush">Request Push Permission</button>
+        <p><small>Requires `clevertap_sw.js` at root and VAPID keys configured in CleverTap dashboard.</small></p>
+    </div>
+
+    <div class="section">
+        <h2>Web Inbox</h2>
+        <div id="clevertap-web-inbox" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
+             <button id="webInboxTrigger">My Inbox Icon</button> </div>
+        <p><small>Configure Element ID (e.g., 'webInboxTrigger' or leave blank for default) and styling in CleverTap Settings -> Channels -> Web Inbox. Content appears based on campaigns.</small></p>
+    </div>
+
+     <div class="section">
+        <h2>Native Display</h2>
+        <p>Placeholders for content pushed via Native Display campaigns.</p>
+        <div id="native-display-banner">
+            <p><em>(Native Display Banner Placeholder - ID: native-display-banner)</em></p>
+        </div>
+        <br>
+        <div id="native-display-kv">
+            <p><em>(Native Display Key-Value Placeholder - ID: native-display-kv. Check console for data if KV campaign is active.)</em></p>
+        </div>
+        <p><small>Requires Native Display campaigns (Banner, Carousel, KV Pair, etc.) configured in CleverTap. You might need custom JavaScript to render Key-Value pair data.</small></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

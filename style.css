@@ -1,0 +1,94 @@
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    margin: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+h1, h2 {
+    color: #0056b3; /* CleverTap blue */
+}
+
+.section {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #ff6900; /* CleverTap orange */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 5px 5px 5px 0;
+    font-size: 0.9em;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: #e05c00;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+select {
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    min-width: 150px;
+}
+
+label {
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-color: #eee;
+    margin: 15px 0;
+}
+
+small {
+    color: #666;
+}
+
+.placeholder {
+    font-weight: bold;
+    color: #cc0000;
+}
+
+/* Basic style for the web inbox trigger placeholder */
+#clevertap-web-inbox button {
+    background-color: #0056b3;
+    padding: 12px;
+    border-radius: 50%; /* Make it circular */
+}
+#clevertap-web-inbox button:hover {
+    background-color: #003d82;
+}
+
+/* Placeholder styles for native display */
+#native-display-banner,
+#native-display-kv {
+    border: 2px dashed #ccc;
+    padding: 15px;
+    min-height: 50px;
+    text-align: center;
+    color: #777;
+    background-color: #f9f9f9;
+}
